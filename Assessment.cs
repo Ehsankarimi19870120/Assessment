@@ -11,8 +11,7 @@ public class Assessment : IAssessment
     {
         if (scores == null)
             return null;
-        int _maxValue = scores.Max(p => p.Value);
-        return scores.Where(p => p.Value == _maxValue).FirstOrDefault();
+       return scores.Aggregate((currentScore,nextScore) => currentScore.CompareTo(nextScore) > 0 ? currentScore : nextScore);
     }
 
     /// <summary>
